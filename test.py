@@ -8,6 +8,8 @@ mydata = {
 
 def test_factoring():
     data = [
+            (0, []),
+            (1, []),
             (7, [7]),
             (12, [2, 2, 3]),
             (42, [2,3,7]),
@@ -23,4 +25,14 @@ def test_factoring():
         # I know I'm executing an http response and that's A Very Bad Idea (tm)
         assert(resplist == expect)
 
+def test_primes_upto_100():
+    for i in range(100):
+        response = httpx.post(url+"factor", data={"inINT": i})
+        resplist = eval(response.text)
+        if len(resplist) == 1:
+            print(f"prime: {i}")
+
+
 test_factoring()
+
+test_primes_upto_100()

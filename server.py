@@ -2,6 +2,9 @@ from flask import Flask, request
 
 def trial_division(n):
     factors = []
+    # handle 0 and 1
+    if n < 2:
+        return factors
     # Handle 2 separately
     while n % 2 == 0:
         factors.append(2)
